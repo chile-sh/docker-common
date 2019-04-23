@@ -1,0 +1,48 @@
+version: '3.1'
+
+services:
+  postgres:
+    image: postgres:alpine
+    container_name: postgres-cl
+    shm_size: '1gb'
+    ports:
+      - '0.0.0.0:5432:5432'
+    volumes:
+      - pg-data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: $PG_PASS
+    networks:
+      - back-end
+
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    container_name: rabbitmq-cl
+    ports:
+      - '0.0.0.0:15672:15672'
+      - '0.0.0.0:5672:5672'
+    volumes:
+      - rmq-data:/var/lib/rabbitmq
+    environment:
+      - RABBITMQ_DEFAULT_USER=$RABBIT_USER
+      - RABBITMQ_DEFAULT_PASS=$RABBIT_PASS
+    networks:
+      - back-end
+
+  redis:
+    image: redis:alpine
+    container_name: redis-cl
+    command: redis-server --requirepass $REDIS_PASS
+    volumes:
+      - redis-data:/data
+    ports:
+      - '0.0.0.0:6379:6379'
+    networks:
+      - back-end
+
+volumes:
+  pg-data:
+  rmq-data:
+  redis-data:
+
+networks:
+  back-end:

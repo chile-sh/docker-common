@@ -1,0 +1,14 @@
+version: '3.1'
+
+services:
+  postgres:
+    restart: always
+    container_name: postgres-cl-prod
+
+  rabbitmq:
+    restart: always
+    container_name: rabbitmq-cl-prod
+
+  redis:
+    restart: always
+    container_name: redis-cl-prod
