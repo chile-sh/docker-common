@@ -23,8 +23,8 @@ services:
     volumes:
       - rmq-data:/var/lib/rabbitmq
     environment:
-      - RABBITMQ_DEFAULT_USER=$RABBIT_USER
-      - RABBITMQ_DEFAULT_PASS=$RABBIT_PASS
+      - RABBITMQ_DEFAULT_USER=$RMQ_USER
+      - RABBITMQ_DEFAULT_PASS=$RMQ_PASS
     networks:
       - back-end
 
