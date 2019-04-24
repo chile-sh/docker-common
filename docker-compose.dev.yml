@@ -1,0 +1,14 @@
+version: '3.1'
+
+services:
+  postgres:
+    restart: unless-stopped
+    container_name: postgres-cl-dev
+
+  rabbitmq:
+    restart: unless-stopped
+    container_name: rabbitmq-cl-dev
+
+  redis:
+    restart: unless-stopped
+    container_name: redis-cl-dev
