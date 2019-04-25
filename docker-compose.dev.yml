@@ -4,11 +4,24 @@ services:
   postgres:
     restart: unless-stopped
     container_name: postgres-cl-dev
+    ports:
+      - 0.0.0.0:5432:5432
 
   rabbitmq:
     restart: unless-stopped
     container_name: rabbitmq-cl-dev
+    ports:
+      - 0.0.0.0:15672:15672
+      - 0.0.0.0:5672:5672
 
   redis:
     restart: unless-stopped
     container_name: redis-cl-dev
+    ports:
+      - 0.0.0.0:6379:6379
+
+  elasticsearch:
+    restart: unless-stopped
+    container_name: elasticsearch-cl-dev
+    ports:
+      - 0.0.0.0:9200:9200

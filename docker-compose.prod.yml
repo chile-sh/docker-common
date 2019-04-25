@@ -4,22 +4,32 @@ services:
   postgres:
     restart: always
     container_name: postgres-cl-prod
+    ports:
+      - '5432:5432'
     volumes:
-      - pg-data:/var/lib/postgresql/data
+      - $VOLUME_MNT/pg-data:/var/lib/postgresql/data
 
   rabbitmq:
     restart: always
     container_name: rabbitmq-cl-prod
+    ports:
+      - 15672:15672
+      - 5672:5672
     volumes:
-      - rmq-data:/var/lib/rabbitmq
+      - $VOLUME_MNT/rmq-data:/var/lib/rabbitmq
 
   redis:
     restart: always
     container_name: redis-cl-prod
+    ports:
+      - 6379:6379
     volumes:
-      - redis-data:/data
+      - $VOLUME_MNT/redis-data:/data
 
-volumes:
-  pg-data:
-  rmq-data:
-  redis-data:
+  elasticsearch:
+    restart: always
+    container_name: elasticsearch-cl-prod
+    ports:
+      - 9200:9200
+    volumes:
+      - $VOLUME_MNT/es-data:/usr/share/elasticsearch/data

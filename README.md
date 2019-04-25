@@ -6,10 +6,10 @@ Common services used by [chile.sh](https://chile.sh)
 cp .env.example .env
 
 # Development
-docker-compose up -f docker-compose.yml -f docker-compose.dev.yml
+docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d
 
 # Production
-docker-compose up -f docker-compose.yml -f docker-compose.prod.yml
+docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d
 ```
 
 # License
