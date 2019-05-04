@@ -1,4 +1,4 @@
-version: '3.1'
+version: '3.5'
 
 services:
   postgres:
@@ -43,3 +43,4 @@ services:
 
 networks:
   back-end:
+    name: back-end
